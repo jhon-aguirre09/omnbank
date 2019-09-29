@@ -2,18 +2,29 @@
 {% load bootstrap3 %}
 
 {% block content %}
-<h1>
-  <div class="register-title">
-    Sign Up
-  </div>
-</h1>
-<form method="POST" class="register">
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  <!-- <input type="text" name='username' class="register-input" id="id_username" placeholder="User">
-  <input type="email" name='email' class="register-input" id="id_email" placeholder="Email">
-  <input type="password" name='password1' class="register-input" id="id_password1" placeholder="Password">
-  <input type="password" name='password2' class="register-input" id="id_password2" placeholder="Confirm Password"> -->
-  <input type="submit" class="btn register-button" value="Registrar">
-</form>
+  <h1>
+    <div class="signup-title">
+      Sign Up
+    </div>
+  </h1>
+  <form method="POST" class="signup-form">
+    {% csrf_token %}
+    <input type="text" name='username' class="register-input" id="id_username" placeholder="Username">
+    <div class="help-block">
+      Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+    </div>
+    <input type="email" name='email' class="register-input" id="id_email" placeholder="Email">
+    <input type="password" name='password1' class="register-input" id="id_password1" placeholder="Password">
+    <div class="help-block">
+      <ul>
+        <li>Your password can't be too similar to your other personal information.</li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can't be a commonly used password.</li>
+        <li>Your password can't be entirely numeric.</li>
+      </ul>
+    </div>
+    <input type="password" name='password2' class="register-input" id="id_password2" placeholder="Confirm Password">
+    <div class="help-block">Enter the same password as before, for verification.</div>
+    <input type="submit" class="btn register-button" value="Register">
+  </form>
 {% endblock %}
