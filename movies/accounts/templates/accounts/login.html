@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    <div class="register-title">
+      Log In
+    </div>
+  </h1>
+  <form action="{% url 'login' %}" method="POST" class="register">
+    {% csrf_token %}
+    <input type="text" name='username' class="register-input" id="id_username" placeholder="Usuario">
+    <input type="password" name='password' class="register-input" id="id_password" placeholder="Contraseña">
+    <input type="submit" class="btn register-button" value="Ingresar">
+  </form>
+{% endblock %}

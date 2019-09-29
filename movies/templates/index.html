@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to your movies page!</h1>
+  <hr class="my-4">
+  <p>If you are a new user please register</p>
+  <a href="{% url 'accounts:signup' %}"><button type="button" class="btn btn-danger" href="{% url 'accounts:signup' %}">Sign Up</button></a>
+</div>
+{% endblock %}

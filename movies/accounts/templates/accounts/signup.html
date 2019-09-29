@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+<h1>
+  <div class="register-title">
+    Sign Up
+  </div>
+</h1>
+<form method="POST" class="register">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <!-- <input type="text" name='username' class="register-input" id="id_username" placeholder="User">
+  <input type="email" name='email' class="register-input" id="id_email" placeholder="Email">
+  <input type="password" name='password1' class="register-input" id="id_password1" placeholder="Password">
+  <input type="password" name='password2' class="register-input" id="id_password2" placeholder="Confirm Password"> -->
+  <input type="submit" class="btn register-button" value="Registrar">
+</form>
+{% endblock %}
