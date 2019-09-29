@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for movie in movies_list %}
+    <a href="{% url 'crud_app:single' pk=movie.pk %}">@{{movie.name}}</a>
+  {% endfor %}
+{% endblock %}
