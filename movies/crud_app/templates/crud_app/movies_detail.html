@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{movies.name}}</h1>
+
+<h2>{{movies.description}}</h2>
+
+<h3>{{ movies.user.username }}</h3>
+
+{% endblock %}

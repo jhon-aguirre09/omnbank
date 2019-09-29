@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -19,8 +20,8 @@ class Movies(models.Model):
         super().save(*args,**kwargs)
 
     def get_absolute_url(self):
-        return reverse('crud_app:single',kwargs={'username':self.user.username,
-                                                'pk':self.pk})
+        return reverse('crud_app:detail',kwargs={'pk':self.pk})
+        
     class Meta:
         ordering = ['name']
 
