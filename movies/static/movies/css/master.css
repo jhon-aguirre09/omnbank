@@ -106,3 +106,7 @@ input {
 .register-button:focus {
   outline: 0;
 }
+
+.myfont{
+  font-family: 'Mansalva', cursive;
+}
