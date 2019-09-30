@@ -2,11 +2,11 @@
 
 {% block content %}
   <h1>
-    <div class="signup-title">
+    <div class="big-title">
       Sign Up
     </div>
   </h1>
-  <form method="POST" class="signup-form">
+  <form method="POST" class="big-form">
     {% csrf_token %}
     <input type="text" name='username' class="register-input" id="id_username" placeholder="Username">
     <div class="help-block">

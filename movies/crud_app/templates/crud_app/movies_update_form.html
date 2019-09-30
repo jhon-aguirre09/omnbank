@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Update</title>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name='name' class='register-input' id="id_name" value="{{ movies.name }}">
+    <textarea name="description" id="id_description" rows="8" cols="80">{{ movies.description }}</textarea>
+    <input type="text" name='gener' class='register-input' id="id_gener" value="{{ movies.gener }}">
+    <input type="text" name='director' class='register-input' id="id_director" value="{{ movies.director }}">
+    <input type="submit" value="Add" class='register-button' class="btn btn-primary btn-large">
+  </form>
+{% endblock %}

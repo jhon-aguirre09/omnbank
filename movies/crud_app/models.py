@@ -9,6 +9,8 @@ class Movies(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.TextField(max_length=80)
     slug = models.SlugField(allow_unicode=True,unique=True)
+    gener = models.TextField(max_length=80, default='drama')
+    director = models.TextField(max_length=80,default='Null')
     description = models.TextField()
     recommendations = models.ManyToManyField(User, related_name='recommendations_for_user', through='RecommendationUser')
 
@@ -21,7 +23,7 @@ class Movies(models.Model):
 
     def get_absolute_url(self):
         return reverse('crud_app:detail',kwargs={'pk':self.pk})
-        
+
     class Meta:
         ordering = ['name']
 
