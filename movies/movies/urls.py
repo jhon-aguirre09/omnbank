@@ -16,6 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from. import views
+from crud_app.models import Movies
+from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
+
+class MoviesSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Movies
+        fields = ['name', 'director', 'gener']
+
+class MoviesViewSet(viewsets.ModelViewSet):
+    queryset = Movies.objects.all()
+    serializer_class = MoviesSerializer
+
+router = routers.DefaultRouter()
+router.register(r'movies', MoviesViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +39,6 @@ urlpatterns = [
     path('accounts/',include('django.contrib.auth.urls')),
     path('test/',views.TestPage.as_view(), name='test'),
     path('thanks/',views.ThanksPage.as_view(),name='thanks'),
-    path('movies/', include('crud_app.urls',namespace='crud_app'))
+    path('movies/', include('crud_app.urls',namespace='crud_app')),
+    re_path(r'^api-auth/', include('rest_framework.urls')),
 ]
