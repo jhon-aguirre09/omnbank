@@ -21,7 +21,11 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="{% url 'crud_app:create' %}"><button type="button" class="btn btn-outline-info">Add Movie</button></a></li>
           </ul>
-          <a class="nav-link text-warning"><h4>Welcome: @{{ user.username }}</h4></a>
+          <a class="nav-link text-warning"><h5>Welcome: @{{ user.username }}</h5></a>
+          <form action="{% url 'crud_app:search' %}" method="GET" class="form-inline">
+            <input name='q' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 mr-sm-2" type="submit">Search</button>
+          </form>
           <a href="{% url 'accounts:logout' %}"><button type="button" class="btn btn-outline-danger">Log Out</button></a>
         {% else %}
           <ul class="navbar-nav mr-auto"></ul>

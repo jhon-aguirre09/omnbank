@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from django.db.models import Q
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -9,8 +10,8 @@ class Movies(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.TextField(max_length=80)
     slug = models.SlugField(allow_unicode=True,unique=True)
-    gener = models.TextField(max_length=80, default='drama')
-    director = models.TextField(max_length=80,default='Null')
+    gener = models.TextField(max_length=80)
+    director = models.TextField(max_length=80)
     description = models.TextField()
     recommendations = models.ManyToManyField(User, related_name='recommendations_for_user', through='RecommendationUser')
 

@@ -3,6 +3,9 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
+from django.db.models import Q
+
+from django.contrib.auth.decorators import login_required
 
 from . import models
 
@@ -32,3 +35,15 @@ class ClientUpdate(LoginRequiredMixin, generic.UpdateView):
     model = models.Movies
     fields = ['name','description','gener','director']
     template_name_suffix = '_update_form'
+
+################################################################################
+
+def searching(request):
+
+    q = request.GET.get('q', '')
+
+    querys = (Q(name__icontains=q))
+
+    movies_s = models.Movies.objects.filter(querys)
+
+    return render(request, 'search.html', {'movies_s': movies_s})
