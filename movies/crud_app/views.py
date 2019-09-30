@@ -1,9 +1,13 @@
 from django.shortcuts import render
+from django.urls import reverse
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 from django.db.models import Q
+from django.shortcuts import get_object_or_404
+from django.contrib import messages
+from django.db import IntegrityError
 
 from django.contrib.auth.decorators import login_required
 
@@ -35,6 +39,24 @@ class ClientUpdate(LoginRequiredMixin, generic.UpdateView):
     model = models.Movies
     fields = ['name','description','gener','director']
     template_name_suffix = '_update_form'
+
+class AddRecommend(LoginRequiredMixin,generic.RedirectView):
+
+    def get_redirect_url(self,*args,**kwargs):
+        return reverse('crud_app:detail', kwargs={'pk':self.kwargs.get('pk')})
+
+    def get(self,request,*args,**kwargs):
+
+        movie = get_object_or_404(models.Movies, pk=self.kwargs.get('pk'))
+
+        try:
+            models.RecommendationUser.objects.create(user=self.request.user,movie=movie)
+        except IntegrityError:
+            messages.warning(self.request, 'Warning already recommend!')
+        else:
+            messages.success(self.request,'You now recommend the movie!')
+
+        return super().get(request,*args,**kwargs)
 
 ################################################################################
 

@@ -5,10 +5,18 @@
 <div class="card border-success mb-3 text-center">
   <div class="card-header border-success">
     <h3>{{ movies.name }}</h3>
+    <h6 class="text-muted">Recommendations: {{ movies.recommendations.count }}</h6>
   </div>
   <div class="card-body">
     <h5 class="card-title">By: {{ movies.user.username }}</h5>
     <p class="card-text">{{ movies.description }}</p>
+    {% if user in movies.recommendations.all %}
+
+    {% else %}
+      <a href="{% url 'crud_app:add_recommend' pk=movies.pk %}" title="recommend" class="btn btn-primary btn-sm">
+        Recommend
+      </a>
+    {% endif %}
   </div>
   <div class="card-footer border-success">
     <p>Gener: {{ movies.gener }}</p>

@@ -8,6 +8,7 @@ urlpatterns = [
     path('new/', views.CreateMovie.as_view(),name='create'),
     path('search/', views.searching, name='search'),
     re_path(r'^movie/(?P<pk>\d+)/$', views.MovieDetail.as_view(), name='detail'),
-    re_path(r'delete/(?P<pk>\d+)/$',views.DeleteClient.as_view(),name='delete'),
-    re_path(r'edit/(?P<pk>\d+)/$',views.ClientUpdate.as_view(),name='movie_edit'),
+    re_path(r'^delete/(?P<pk>\d+)/$',views.DeleteClient.as_view(),name='delete'),
+    re_path(r'^edit/(?P<pk>\d+)/$',views.ClientUpdate.as_view(),name='movie_edit'),
+    re_path(r'^movie/(?P<pk>\d+)/recommend/$', views.AddRecommend.as_view(),name='add_recommend'),
 ]

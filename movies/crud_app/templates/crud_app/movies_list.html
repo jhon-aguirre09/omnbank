@@ -6,11 +6,17 @@
   {% for movie in movies_list %}
     <div class="card border-info">
       <div class="card-header border-warning" id="heading{{movie.pk}}">
-        <h2 class="mb-0">
-          <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#collapse{{movie.pk}}" aria-expanded="false" aria-controls="collapse{{movie.pk}}">
-            {{ movie.name }}
-          </button>
-        </h2>
+        <form>
+          <div class="form-inline">
+            <h2 class="mb-0 col-sm-8">
+              <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#collapse{{movie.pk}}" aria-expanded="false" aria-controls="collapse{{movie.pk}}">
+                {{ movie.name }}
+              </button>
+            </h2>
+            <div class="col-sm-1 mb-1">
+            </div>
+          </div>
+        </form>
       </div>
       <div id="collapse{{movie.pk}}" class="collapse" aria-labelledby="heading{{movie.pk}}" data-parent="#accordionExec">
         <div class="card-body text-info">
